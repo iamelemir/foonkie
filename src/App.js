@@ -1,13 +1,9 @@
-import './App.css';
-import Users from '../src/routes/users'
+// import './App.css';
+// import Users from '../src/routes/users'
+import Home from "./components/home";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>TEST...</h1>
-        <Users></Users>
-      </header>
-    </div>
+    <Home />
   );
 }
 
