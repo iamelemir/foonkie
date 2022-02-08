@@ -11,14 +11,21 @@
 
 nav {
   z-index: 1000;
-  position: fixed;
+  position: absolute;
   top: 0;
-  margin-left: 65%;
-  width: 30%;
+  width: 100%;
   height: 50px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: right;
+}
+
+nav a {
+  padding: 2%;
+}
+
+nav button {
+  margin-right: 2%;
 }
 
 .loginButton {
@@ -168,7 +175,8 @@ nav {
 .circleTwo {
   width: 500px;
   height: 500px;
-  background-color: #fff;
+  background-color: #fffbef;
+
   border-radius: 50%;
   opacity: 19%;
 }
@@ -215,18 +223,89 @@ nav {
 
 .circleTwo1 {
   position: absolute;
-  top: 1450px;
-  left: 10%;
+  /* top: 1450px; */
+  top: 108%;
+  left: 5%;
+  height: 97.04817199707031px;
+  width: 249.71588134765625px;
+  border-radius: 10px;
+  background: #fff;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .circleTwo2 {
   position: absolute;
-  top: 2050px;
-  left: 7%;
+  top: 145%;
+  left: 4%;
+  height: 114.9656753540039px;
+  width: 287.77301025390625px;
+  border-radius: 10px;
+  background: #fff;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .circleTwo3 {
   position: absolute;
-  top: 1800px;
-  left: 45%;
+  top: 128%;
+  left: 37%;
+  height: 97.04817199707031px;
+  width: 249.71588134765625px;
+  border-radius: 10px;
+  background: #fff;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer {
+  padding: 5%;
+  width: 100%;
+  height: 300px;
+  background-color: #fffbef;
+  display: flex;
+  justify-content: center;
+}
+
+.footerOne {
+  width: 20%;
+  height: 60%;
+  display: grid;
+  font-weight: bold;
+
+  /* background-color: #ffcc1c; */
+}
+
+.footerTwo {
+  padding-top: 2%;
+  width: 30%;
+  height: 60%;
+  font-weight: bold;
+}
+.footerTwo span {
+  opacity: 0.65;
+}
+
+.footerTwo2 {
+  padding-top: 10%;
+  width: 100%;
+  height: 50%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.footerThree {
+  font-weight: bold;
+  padding-top: 2%;
+  width: 30%;
+  height: 20%;
+  /* background-color: #ffcc1c; */
+  display: grid;
 }
