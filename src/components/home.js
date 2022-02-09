@@ -1,20 +1,61 @@
+
 import '../css/home.css';
 import '../css/mediaQuerys.css';
 import frutas from '../images/frutas.png'
 import logo from '../images/FoonkieMonkey.png'
+import linkedin from '../images/Shape.png'
+import facebook from '../images/facebook.png'
+import twitter from '../images/Twitter.png'
+import ListUSers from './listUser';
+
+const person = [
+    {
+        "id": 1,
+        "email": "george.bluth@reqres.in",
+        "first_name": "George", "last_name": "Bluth",
+        "avatar": "https://reqres.in/img/faces/1-image.jpg"
+    },
+    {
+        "id": 2, "email": "janet.weaver@reqres.in",
+        "first_name": "Janet", "last_name": "Weaver",
+        "avatar": "https://reqres.in/img/faces/2-image.jpg"
+    },
+    {
+        "id": 3, "email": "emma.wong@reqres.in",
+        "first_name": "Emma", "last_name": "Wong",
+        "avatar": "https://reqres.in/img/faces/3-image.jpg"
+    },
+    {
+        "id": 4, "email": "eve.holt@reqres.in",
+        "first_name": "Eve", "last_name": "Holt",
+        "avatar": "https://reqres.in/img/faces/4-image.jpg"
+    },
+    {
+        "id": 5, "email": "charles.morris@reqres.in",
+        "first_name": "Charles", "last_name": "Morris",
+        "avatar": "https://reqres.in/img/faces/5-image.jpg"
+    },
+    {
+        "id": 6, "email": "tracey.ramos@reqres.in",
+        "first_name": "Tracey",
+        "last_name": "Ramos",
+        "avatar": "https://reqres.in/img/faces/6-image.jpg"
+    }
+]
+
 
 function Home() {
     return (
         <div className='container'>
-            <PrimerBox />
+            <ListUSers />
+            {/* <PrimerBox />
             <img className='frutas' src={frutas} alt="" />
             <SegundoBox />
             <TercerBox />
-            {/* <Footer /> */}
+            <Footer /> */}
         </div>
     )
 }
-
 
 function Nav() {
     return (
@@ -56,9 +97,13 @@ function PrimerBox() {
 }
 
 function SegundoBox() {
+
+    const showModal = () => {
+        person.map(x => console.log(x.id))
+    }
     return (
         <div className='secondBox'>
-            <button className='downloaderButton'>Download</button>
+            <button onClick={showModal} className='downloaderButton'>Download</button>
             <fieldset className='subBoxTwo'>
                 <legend>Karen - New York</legend>
                 <div >Lorem ipsum dolor, sit amet consectetur adipisicing elit.</div>
@@ -113,34 +158,51 @@ function TercerBox() {
 
 function Footer() {
     return (
-        <footer>
-            <div className='footerOne'>
-                <img src={logo} alt="" />
-                <span>+0 (0000) 000 00-00</span>
-                <span>support@sniff.com</span>
-            </div>
-            <div className='footerTwo'>
-                Quick Links
-                <div className='footerTwo2'>
-                    <span>
-                        Product
-                    </span>
-                    <span>
-                        Information
-                    </span>
-                    <span>
-                        Company
-                    </span>
-                    <span>
-                        Foonkie monkey
-                    </span>
+        <div className='footerFinal'>
+            <footer>
+                <div className='footerOne'>
+                    <img src={logo} alt="" />
+                    <span>+0 (0000) 000 00-00</span>
+                    <span>support@sniff.com</span>
+                </div>
+                <div className='footerTwo'>
+                    Quick Links
+                    <div className='footerTwo2'>
+                        <span>
+                            Product
+                        </span>
+                        <span>
+                            Information
+                        </span>
+                        <span>
+                            Company
+                        </span>
+                        <span>
+                            Foonkie monkey
+                        </span>
+                    </div>
+                </div>
+                <div className='footerThree'>
+                    Subscribe
+                    <input placeholder='Get product updates' type="text" name="" id="" />
+                </div>
+            </footer>
+            <hr />
+            <div className='footerInitial'>
+                <div className='footerImages'>
+                    <img src={linkedin} alt="" />
+                    <img src={facebook} alt="" />
+                    <img src={twitter} alt="" />
+                </div>
+                <div className='footerLogo'>
+                    <span>Powered by</span>
+                    <img src={logo} alt="" />
+                </div>
+                <div className='footerInformation'>
+                    <span>© 2021 FM. All rights reserved</span>
                 </div>
             </div>
-            <div className='footerThree'>
-                Subscribe
-                <input placeholder='Get product updates' type="text" name="" id="" />
-            </div>
-        </footer>
+        </div>
     )
 }
 
