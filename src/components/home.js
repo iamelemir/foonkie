@@ -1,4 +1,3 @@
-
 import '../css/home.css';
 import '../css/mediaQuerys.css';
 import frutas from '../images/frutas.png'
@@ -6,16 +5,14 @@ import logo from '../images/FoonkieMonkey.png'
 import linkedin from '../images/Shape.png'
 import facebook from '../images/facebook.png'
 import twitter from '../images/Twitter.png'
-// import ListUSers from './listUser';
-
-import Users from '../routes/users';
+import { Link } from "react-router-dom";
 
 function Home() {
     return (
         <div className='container'>
             <PrimerBox />
-            <Users ></Users>
             <img className='frutas' src={frutas} alt="" />
+            <SegundoBox />
             <TercerBox />
             <Footer />
         </div>
@@ -61,6 +58,33 @@ function PrimerBox() {
     )
 }
 
+function SegundoBox() {
+    return (
+        <div className='secondBox'>
+            <Link to="/users">
+                <button className='downloaderButton'>Download</button>
+            </Link>
+            <fieldset className='subBoxTwo'>
+                <legend>Karen - New York</legend>
+                <div >Lorem ipsum dolor, sit amet consectetur adipisicing elit.</div>
+            </fieldset>
+            <fieldset className='subBoxThree'>
+                <legend>Karen - New York</legend>
+                <div>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</div>
+            </fieldset>
+
+            <fieldset className='subBoxFour'>
+                <div>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</div>
+                <legend>Karen - New York</legend>
+            </fieldset>
+
+            <fieldset className='subBoxFive'>
+                <div>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</div>
+                <legend>Karen - New York</legend>
+            </fieldset>
+        </div>
+    )
+}
 
 
 function TercerBox() {
