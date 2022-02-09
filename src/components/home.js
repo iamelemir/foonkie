@@ -6,53 +6,18 @@ import logo from '../images/FoonkieMonkey.png'
 import linkedin from '../images/Shape.png'
 import facebook from '../images/facebook.png'
 import twitter from '../images/Twitter.png'
-import ListUSers from './listUser';
+// import ListUSers from './listUser';
 
-const person = [
-    {
-        "id": 1,
-        "email": "george.bluth@reqres.in",
-        "first_name": "George", "last_name": "Bluth",
-        "avatar": "https://reqres.in/img/faces/1-image.jpg"
-    },
-    {
-        "id": 2, "email": "janet.weaver@reqres.in",
-        "first_name": "Janet", "last_name": "Weaver",
-        "avatar": "https://reqres.in/img/faces/2-image.jpg"
-    },
-    {
-        "id": 3, "email": "emma.wong@reqres.in",
-        "first_name": "Emma", "last_name": "Wong",
-        "avatar": "https://reqres.in/img/faces/3-image.jpg"
-    },
-    {
-        "id": 4, "email": "eve.holt@reqres.in",
-        "first_name": "Eve", "last_name": "Holt",
-        "avatar": "https://reqres.in/img/faces/4-image.jpg"
-    },
-    {
-        "id": 5, "email": "charles.morris@reqres.in",
-        "first_name": "Charles", "last_name": "Morris",
-        "avatar": "https://reqres.in/img/faces/5-image.jpg"
-    },
-    {
-        "id": 6, "email": "tracey.ramos@reqres.in",
-        "first_name": "Tracey",
-        "last_name": "Ramos",
-        "avatar": "https://reqres.in/img/faces/6-image.jpg"
-    }
-]
-
+import Users from '../routes/users';
 
 function Home() {
     return (
         <div className='container'>
-            <ListUSers />
-            {/* <PrimerBox />
+            <PrimerBox />
+            <Users ></Users>
             <img className='frutas' src={frutas} alt="" />
-            <SegundoBox />
             <TercerBox />
-            <Footer /> */}
+            <Footer />
         </div>
     )
 }
@@ -96,35 +61,7 @@ function PrimerBox() {
     )
 }
 
-function SegundoBox() {
 
-    const showModal = () => {
-        person.map(x => console.log(x.id))
-    }
-    return (
-        <div className='secondBox'>
-            <button onClick={showModal} className='downloaderButton'>Download</button>
-            <fieldset className='subBoxTwo'>
-                <legend>Karen - New York</legend>
-                <div >Lorem ipsum dolor, sit amet consectetur adipisicing elit.</div>
-            </fieldset>
-            <fieldset className='subBoxThree'>
-                <legend>Karen - New York</legend>
-                <div>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</div>
-            </fieldset>
-
-            <fieldset className='subBoxFour'>
-                <div>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</div>
-                <legend>Karen - New York</legend>
-            </fieldset>
-
-            <fieldset className='subBoxFive'>
-                <div>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</div>
-                <legend>Karen - New York</legend>
-            </fieldset>
-        </div>
-    )
-}
 
 function TercerBox() {
     return (
