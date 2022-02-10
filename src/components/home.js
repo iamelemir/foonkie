@@ -63,7 +63,7 @@ function SegundoBox() {
     return (
         <div className='secondBox'>
             <Link to='users'>
-                <button onClick={showModal} className='downloaderButton'>Download</button>
+                <button className='downloaderButton'>Download</button>
             </Link>
             <fieldset className='subBoxTwo'>
                 <legend>Karen - New York</legend>

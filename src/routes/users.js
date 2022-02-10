@@ -5,8 +5,7 @@ import '../css/home.css';
 import { Link } from "react-router-dom";
 import axios from 'axios';
 
-
-async function fetchTodo() {
+async function fetchUsers() {
     try {
         const res = await axios.get(`https://reqres.in/api/users?page=1`);
         return res.data.data;
@@ -15,16 +14,55 @@ async function fetchTodo() {
     }
 }
 
-function useGetTodos() {
-    const [todo, setTodo] = useState([]);
-    const [loadingTodos, setLoadingTodos] = useState(false);
+// async function fetchUser(id) {
+//     try {
+//         const res = await axios.get(`https://reqres.in/api/users?page=1`);
+//         let data = res.data.data;
+//         let person = data.filter(user => user.id == id);
+//         console.log(person[0]);
+
+//         return person[0];
+//     } catch (error) {
+//         console.error(error);
+//     }
+// }
+
+// function useGetUSer() {
+//     const [user, setUser] = useState([]);
+//     const [loadingUser, setLoadingUser] = useState(false);
+
+//     const fetch = async () => {
+//         try {
+//             setLoadingUser(true);
+//             const data = (await fetchUser()) || [];
+//             console.log(data)
+//             setUser(data);
+//             setLoadingUser(false);
+//         } catch (error) {
+//             console.error(error);
+//         }
+//     };
+
+//     const refetch = async () => {
+//         await fetch();
+//     };
+
+//     useEffect(() => {
+//         fetch();
+//     }, []);
+//     return { user, loadingUser, refetchUser: refetch };
+// }
+
+function useGetUsers() {
+    const [users, setUsers] = useState([]);
+    const [loadingUSers, setLoadingUsers] = useState(false);
 
     const fetch = async () => {
         try {
-            setLoadingTodos(true);
-            const data = (await fetchTodo()) || [];
-            setTodo(data);
-            setLoadingTodos(false);
+            setLoadingUsers(true);
+            const data = (await fetchUsers()) || [];
+            setUsers(data);
+            setLoadingUsers(false);
         } catch (error) {
             console.error(error);
         }
@@ -37,7 +75,7 @@ function useGetTodos() {
     useEffect(() => {
         fetch();
     }, []);
-    return { todo, loadingTodos, refetchTodo: refetch };
+    return { users, loadingUSers, refetchUsers: refetch };
 }
 
 const columns = [
@@ -57,29 +95,40 @@ const columns = [
         render: (text, record) => {
             return (
                 <Space size="middle" >
-                    <a
-                        href={record.first_name}
-                        onClick={(e) => {
-                            e.preventDefault();
-                            console.log(record.first_name)
-                        }}
+                    {/* <Link
+                        to="profile"
                     >
-                        View Profile
-                    </a>
+                        <button
+                            onClick={(e) => {
+                                e.preventDefault()
+                                console.log(record.id)
+                            }}
+                        >
+                            View Profile
+                        </button>
+                    </Link> */}
+                    <a
+                        href="#"
+                        onClick={(e) => {
+                            e.preventDefault()
+                            console.log(record.id)
+                        }}
+                    >Ver</a>
                 </Space >
             )
         },
     }
 ]
 
+
 function Users() {
     const [isModalVisible, setIsModalVisible] = useState(true);
 
-    const { todo, loadingTodos, refetchTodo } = useGetTodos();
-    const usersDataSource = todo.map((todos) => ({ ...todos, key: todos.id }));
+    const { users, loadingUSers, refetchUsers } = useGetUsers();
+    const usersDataSource = users.map((users) => ({ ...users, key: users.id }));
 
     const showModal = () => {
-        setIsModalVisible(true);
+        setIsModalVisible(false);
     };
 
     return (
@@ -98,5 +147,38 @@ function Users() {
     )
 }
 
-export default Users;
+// function Profile() {
 
+//     const [isSecondModalVisible, setIsSecondModalVisible] = useState(true);
+
+//     const { user, loadingUSer, refetchUser } = useGetUSer();
+//     // const userData = user.map((user) => ({ ...user, key: user.id }));
+
+//     console.log(user.id)
+
+//     const showSecondModal = () => {
+//         setIsSecondModalVisible(false);
+//     }
+//     return (
+//         <>
+//             <Modal
+//                 title="Personal Profile"
+//                 visible={isSecondModalVisible}
+//                 footer={null}
+//             >
+//                 <h1>{user.id}</h1>
+//                 {/* <Table columns={columns} dataSource={userData} /> */}
+//                 <Link to="/users">
+//                     <Button onClick={showSecondModal}>Users</Button>
+//                 </Link>
+//             </Modal>
+//         </>
+//     )
+// }
+
+// export {
+//     Users,
+//     Profile
+// }
+
+export default Users;
