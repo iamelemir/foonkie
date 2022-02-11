@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Modal, Table, Button, Space } from 'antd';
+import { Modal, Table, Button, Space, Avatar } from 'antd';
 import "antd/dist/antd.css";
 import '../css/home.css';
 import { Link } from "react-router-dom";
 import axios from 'axios';
+import { render } from '@testing-library/react';
 
 async function fetchUsers() {
     try {
@@ -13,45 +14,6 @@ async function fetchUsers() {
         console.error(error);
     }
 }
-
-// async function fetchUser(id) {
-//     try {
-//         const res = await axios.get(`https://reqres.in/api/users?page=1`);
-//         let data = res.data.data;
-//         let person = data.filter(user => user.id == id);
-//         console.log(person[0]);
-
-//         return person[0];
-//     } catch (error) {
-//         console.error(error);
-//     }
-// }
-
-// function useGetUSer() {
-//     const [user, setUser] = useState([]);
-//     const [loadingUser, setLoadingUser] = useState(false);
-
-//     const fetch = async () => {
-//         try {
-//             setLoadingUser(true);
-//             const data = (await fetchUser()) || [];
-//             console.log(data)
-//             setUser(data);
-//             setLoadingUser(false);
-//         } catch (error) {
-//             console.error(error);
-//         }
-//     };
-
-//     const refetch = async () => {
-//         await fetch();
-//     };
-
-//     useEffect(() => {
-//         fetch();
-//     }, []);
-//     return { user, loadingUser, refetchUser: refetch };
-// }
 
 function useGetUsers() {
     const [users, setUsers] = useState([]);
@@ -95,31 +57,87 @@ const columns = [
         render: (text, record) => {
             return (
                 <Space size="middle" >
-                    {/* <Link
-                        to="profile"
-                    >
-                        <button
-                            onClick={(e) => {
-                                e.preventDefault()
-                                console.log(record.id)
-                            }}
-                        >
-                            View Profile
-                        </button>
-                    </Link> */}
-                    <a
-                        href="#"
+                    <Button
+                        type='primary'
                         onClick={(e) => {
                             e.preventDefault()
-                            console.log(record.id)
+                            render(
+                                <Profile
+                                    data={record}
+                                    value={true}
+                                ></Profile
+                                >
+                            )
                         }}
-                    >Ver</a>
+                    >Personal Info...</Button>
                 </Space >
             )
         },
     }
 ]
 
+const columnsUser = [
+    {
+        title: 'ID',
+        dataIndex: 'id',
+        key: 'id',
+    },
+    {
+        title: 'Name',
+        dataIndex: 'first_name',
+        key: 'first_name',
+    },
+    {
+        title: 'Last Name',
+        dataIndex: 'last_name',
+        key: 'last_name',
+    },
+    {
+        title: 'Email',
+        dataIndex: 'email',
+        key: 'email',
+    },
+]
+
+function Profile(data, value) {
+
+    const [isModalVisible, setIsModalVisible] = useState(value);
+
+    const valores = [];
+    valores.push(data.data);
+
+
+    const displayModal = () => {
+        setIsModalVisible(false)
+    }
+
+    return (
+        <>
+            <Modal
+                title="Personal Information"
+                visible={isModalVisible}
+                footer={null}
+            >
+                <Avatar
+                    size={64}
+                    src={valores[0].avatar}
+                    style={{
+                        display: 'block',
+                        margin: 'auto',
+                        marginBottom: '1%'
+                    }}
+                />
+                <Table columns={columnsUser} dataSource={valores} />
+                <Button
+                    type='danger'
+                    onClick={displayModal}
+                >
+                    cerrar
+                </Button>
+            </Modal>
+        </>
+    )
+}
 
 function Users() {
     const [isModalVisible, setIsModalVisible] = useState(true);
@@ -147,38 +165,5 @@ function Users() {
     )
 }
 
-// function Profile() {
-
-//     const [isSecondModalVisible, setIsSecondModalVisible] = useState(true);
-
-//     const { user, loadingUSer, refetchUser } = useGetUSer();
-//     // const userData = user.map((user) => ({ ...user, key: user.id }));
-
-//     console.log(user.id)
-
-//     const showSecondModal = () => {
-//         setIsSecondModalVisible(false);
-//     }
-//     return (
-//         <>
-//             <Modal
-//                 title="Personal Profile"
-//                 visible={isSecondModalVisible}
-//                 footer={null}
-//             >
-//                 <h1>{user.id}</h1>
-//                 {/* <Table columns={columns} dataSource={userData} /> */}
-//                 <Link to="/users">
-//                     <Button onClick={showSecondModal}>Users</Button>
-//                 </Link>
-//             </Modal>
-//         </>
-//     )
-// }
-
-// export {
-//     Users,
-//     Profile
-// }
 
 export default Users;
